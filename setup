@@ -1,0 +1,9 @@
+gem install zurb-foundation
+gem install devise
+gem install cucumber-rails
+
+rails generate cucumber:install
+rails generate devise:install
+rails generate devis:views
+rails generate devise user
+
