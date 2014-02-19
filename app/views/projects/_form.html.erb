@@ -1,0 +1,6 @@
+<%= simple_form_for @project do |f| %>
+	<%= f.input :name %>
+	<%= f.input :user, :as => :hidden, :input_html => {:value => current_user.id} %>
+	<%= f.submit "Submit" %>
+<% end %>
+
