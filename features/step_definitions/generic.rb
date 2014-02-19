@@ -1,3 +1,12 @@
+Given(/^I am logged in$/) do
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.new(:email => email, :password => password, :password_confirmation => password).save!
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Sign in"
+end
 Given(/^I am on the "(.*?)" page$/) do |path|
 	visit send("#{path.downcase.tr(" ","_")}_path")
 end
@@ -15,7 +24,6 @@ Then(/^I should see "(.*?)"$/) do |identifier|
 end
 
 Then(/^I should be on the "(.*?)" page with params "(.*?)"$/) do |arg1,arg2|
-#	assert "#{uri.path}" == send(arg1.downcase.tr(" ","_")+"_path")
   object = instance_variable_get("@#{arg1}")
 	page.current_path.should == send("#{arg1.downcase.gsub(' ','_')}_path", object)
   page.status_code.should == 200
