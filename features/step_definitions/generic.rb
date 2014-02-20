@@ -28,4 +28,6 @@ Then(/^I should be on the "(.*?)" page with params "(.*?)"$/) do |arg1,arg2|
 	page.current_path.should == send("#{arg1.downcase.gsub(' ','_')}_path", object)
   page.status_code.should == 200
 end
-
+And /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
+  field_labeled(field).value.should =~ /#{value}/
+end

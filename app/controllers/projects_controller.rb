@@ -22,7 +22,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
-
+		@project = Project.find(params[:id])
+		
+		respond_to do |format|
+			format.html
+		end
 	end
 
 	def index
@@ -36,6 +40,17 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+	def update
+		@project = Project.find(params[:id])
+		@project.name = params[:name]
+		if @project.save
+			respond_to do |format|
+				format.html {redirect_to @project}
+			end
+		else
+			render 'edit'
+		end
+end
 	private
 		def project_params
 			params.permit(:id,:name)
