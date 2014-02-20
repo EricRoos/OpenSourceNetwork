@@ -20,6 +20,7 @@ In order to manage my project
 		When I fill in "project_name" with "test project 2"
 		And I press "Submit"
 		Then I should be on the project page for id 4000		
+		And I should see "test project 2"
 
 	Scenario: delete a project successfully
 		Given I am logged in

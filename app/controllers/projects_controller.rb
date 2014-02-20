@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
 	def update
 		@project = Project.find(params[:id])
-		@project.name = params[:name]
+		@project.name = params[:project][:name]
 		if @project.save
 			respond_to do |format|
 				format.html {redirect_to @project}
